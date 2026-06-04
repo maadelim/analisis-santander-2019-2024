@@ -1,0 +1,161 @@
+# 📊 Análisis Financiero — Banco Santander 2019–2024
+
+> **¿Cómo pasó Banco Santander de perder 8.771 millones en 2020 a batir su propio récord histórico en 2024?**  
+> Este proyecto responde esa pregunta con datos reales, código limpio y visualizaciones que cuentan la historia.
+
+-----
+
+## 🎯 Objetivo
+
+Analizar la evolución financiera del Grupo Santander entre 2019 y 2024, identificando los factores que explican su recuperación post-COVID y su máximo histórico de beneficio neto en 2024.
+
+-----
+
+## 🔍 Hallazgos principales
+
+|Hallazgo                             |Dato                                                   |
+|-------------------------------------|-------------------------------------------------------|
+|Peor año de la historia reciente     |2020: **-8.771 M€** (provisiones COVID)                |
+|Récord histórico de beneficio        |2024: **+12.574 M€**                                   |
+|Mercado con mayor crecimiento en 2024|**España: +58,7%** interanual                          |
+|Único mercado que retrocedió en 2024 |**Reino Unido**                                        |
+|Mejora del ratio de eficiencia       |De **47,0%** (2020) → **41,8%** (2024)                 |
+|España como motor del crecimiento    |Aportó el **93%** del incremento de beneficio 2023→2024|
+
+-----
+
+## 📁 Estructura del proyecto
+
+```
+analisis-santander-2019-2024/
+│
+├── data/
+│   ├── santander_resultados_anuales.csv   # KPIs consolidados por año
+│   ├── santander_por_region.csv           # Beneficio y variación por mercado
+│   └── santander_trimestral.csv           # Evolución trimestral
+│
+├── notebooks/
+│   └── 01_analisis_exploratorio.ipynb     # EDA con comentarios paso a paso
+│
+├── src/
+│   └── visualizaciones.py                 # Código principal de visualización
+│
+├── dashboard/
+│   └── app.py                             # Dashboard interactivo con Streamlit
+│
+├── reports/
+│   ├── vis1_heatmap_correlaciones.png
+│   ├── vis2_beneficio_eficiencia.png
+│   ├── vis3_beneficio_por_region.png
+│   ├── vis4_panel_kpis.png
+│   ├── vis5_dona_regiones.png
+│   └── vis6_waterfall_crecimiento.png
+│
+├── requirements.txt
+└── README.md
+```
+
+-----
+
+## 📊 Visualizaciones
+
+### 1. Mapa de correlaciones
+
+Relaciones entre los 8 indicadores financieros clave. La correlación más fuerte: **ingresos vs eficiencia (-0,94)**, lo que confirma que el crecimiento de ingresos es el principal motor de la mejora operativa.
+
+### 2. Beneficio neto vs ratio de eficiencia
+
+Doble eje para mostrar simultáneamente la recuperación del beneficio y la mejora sostenida del ratio de eficiencia desde 2020.
+
+### 3. Beneficio por mercado — 2023 vs 2024
+
+Panel comparativo con barras agrupadas y gráfico de variación interanual. Destaca el papel de España y el retroceso de Reino Unido.
+
+### 4. Panel de KPIs estratégicos (2×2)
+
+Evolución de beneficio neto, base de clientes, ROTE y ratio de eficiencia en un único panel de lectura rápida.
+
+### 5. Dona: composición del beneficio 2024
+
+Distribución geográfica del beneficio por región del grupo, con valores absolutos y porcentuales.
+
+### 6. Waterfall chart: crecimiento 2023 → 2024
+
+Descomposición del incremento de beneficio mercado a mercado. España explica el 93% del crecimiento total del grupo.
+
+-----
+
+## 🗄️ Fuentes de datos
+
+Los datos provienen de los **Informes Anuales oficiales de Banco Santander** (2019–2024), disponibles en:  
+🔗 [www.santander.com/es/accionistas-e-inversores/informacion-financiera](https://www.santander.com/es/accionistas-e-inversores/informacion-financiera)
+
+Los tres datasets fueron construidos manualmente a partir de las memorias anuales y estructurados en un **modelo estrella**:
+
+- `santander_resultados_anuales.csv` → tabla de hechos principal (KPIs consolidados)
+- `santander_por_region.csv` → dimensión geográfica
+- `santander_trimestral.csv` → dimensión temporal granular
+
+-----
+
+## ⚙️ Instalación y uso
+
+### Requisitos
+
+```bash
+pip install -r requirements.txt
+```
+
+### Ejecutar las visualizaciones
+
+```bash
+python src/visualizaciones.py
+```
+
+Las imágenes se guardan automáticamente en la carpeta `reports/`.
+
+### Ejecutar el dashboard interactivo
+
+```bash
+streamlit run dashboard/app.py
+```
+
+-----
+
+## 🛠️ Stack tecnológico
+
+|Herramienta |Uso                                             |
+|------------|------------------------------------------------|
+|`pandas`    |Carga, transformación y análisis de los datasets|
+|`matplotlib`|Visualizaciones base (barras, líneas, waterfall)|
+|`seaborn`   |Heatmap de correlaciones                        |
+|`numpy`     |Cálculos numéricos y estructuras de datos       |
+|`streamlit` |Dashboard interactivo                           |
+|`plotly`    |Gráficos interactivos en el dashboard           |
+
+-----
+
+## 📦 requirements.txt
+
+```
+pandas>=2.0
+matplotlib>=3.7
+seaborn>=0.12
+numpy>=1.24
+streamlit>=1.30
+plotly>=5.18
+```
+
+-----
+
+## 👤 Autora
+
+**Rosa Madelim Mallma Moreno**  
+Licenciada en Contabilidad y Finanzas · Máster en Ciencia de Datos e IA
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Conectar-0077B5?style=flat&logo=linkedin)](https://linkedin.com/in/tu-perfil)
+[![GitHub](https://img.shields.io/badge/GitHub-Ver%20perfil-181717?style=flat&logo=github)](https://github.com/maadelim)
+
+-----
+
+*Proyecto desarrollado como parte del portafolio de Data Science aplicado a finanzas.*
